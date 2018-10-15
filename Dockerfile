@@ -10,11 +10,15 @@ WORKDIR /usr/src/app
 RUN apt-get update && apt-get install -yq ccache && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#RUN cd $WORKDIR
+RUN cd $WORKDIR
 #    git clone <> && \
 #    cd Dronology-GCS && \
 #    git checkout integration
 
+## 2 Install dependancies
+RUN wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh &&\
+bash Miniconda3-latest-Linux-armv7l.sh -b &&\
+python --version
 ## 2. Stop trying to use a synced timeserver - assume no internet connection
 #RUN systemctl stop systemd-timesyncd
 
