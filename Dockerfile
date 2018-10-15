@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -yq ccache && \
 #    git checkout integration
 
 ## 2. Stop trying to use a synced timeserver - assume no internet connection
-RUN systemctl stop systemd-timesyncd
+#RUN systemctl stop systemd-timesyncd
 
 ## 3. TODO setup resinOS version of ssh
 
