@@ -19,7 +19,8 @@ RUN    apt-get update \
 COPY ./requirements.txt /requirements.txt
 
 # pip install python deps from requirements.txt on the resin.io build server
-RUN pip3 install -r /requirements.txt
+RUN pip install --upgrade pip && pip install -r /requirements.txt
+#RUN pip3 install -r /requirements.txt
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
