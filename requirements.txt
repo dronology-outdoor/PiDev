@@ -1,5 +1,5 @@
 numpy 
 scipy
-qt4
+python-qt4
 drone-kit
 simple-settings
