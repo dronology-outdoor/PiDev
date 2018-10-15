@@ -1,7 +1,6 @@
-#from simple_settings import settings
+from simple_settings import settings
 
-LOG_FILE = "/data/defaultlog.log"
-
-f=open(LOG_FILE,'w')
-f.write("Hello")
+print (settings.LOG_FILE)
+f=open(settings.LOG_FILE,'w')
+f.write("Hello DOgs")
 f.close()

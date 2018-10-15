@@ -1,0 +1,5 @@
+python-numpy 
+python-scipy
+python-qt4
+drone-kit
+simple-settings
