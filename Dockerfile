@@ -6,14 +6,7 @@ WORKDIR /usr/src/app
 
 # Install dependencies
 RUN    apt-get update \
-    && apt-get install -yq 
-#        g++ \
-#        python3-dev \
-#        python3-pip \
-#        python3-setuptools \
-#        python3-wheel \
-#        python3-numpy \
-#        python3-scipy
+    && apt-get install -yq ccache 
 
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
