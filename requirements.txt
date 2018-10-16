@@ -1,5 +1,6 @@
+serial
 numpy 
 scipy
 python-qt
-drone-kit
+dronekit
 simple-settings
