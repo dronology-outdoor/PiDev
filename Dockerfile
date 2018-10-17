@@ -11,7 +11,7 @@ WORKDIR /usr/src/app
 COPY ./requirements.txt /requirements.txt
 
 
-RUN ./venv/bin/pip install --upgrade pip && ./venv/bin/pip install -r /requirements.txt
+RUN pip install --upgrade pip && pip install -r /requirements.txt
 
 # Copy the dummy ssh keys into place so it can clone from private repo
 #COPY ./id_rsa ~/.ssh/
