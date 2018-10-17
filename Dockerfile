@@ -10,9 +10,10 @@ WORKDIR /usr/src/app
 #    && apt-get install -yq ccache 
 
 # Copy requirements.txt first for better cache on later pushes
-#COPY ./requirements.txt /requirements.txt
+COPY ./requirements.txt /requirements.txt
 
 # Install python modules
+#TODO Switch commented out lines
 #RUN pip install --upgrade pip && pip install -r /requirements.txt
 RUN pip install --upgrade pip && pip install -r /requirements.txt
 
