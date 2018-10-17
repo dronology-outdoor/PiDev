@@ -1,6 +1,7 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
-FROM resin/raspberrypi3-python:2.7
+FROM resin/raspberrypi3-python:latest
+ENV PYTHON_VERSION 2.7.15
 # Set working directory
 WORKDIR /usr/src/app
 
@@ -23,7 +24,7 @@ WORKDIR /usr/src/app
 #RUN git clone https://github.com/dronology-outdoor/PiDronology.git 	
 
 # This will copy all files in our root to the working  directory in the container
-COPY . ./
+#COPY . ./
 
 # Copy the networking file into place
 #COPY ./DronologyAdHoc /system-connections/
@@ -37,4 +38,4 @@ COPY . ./
 #git clone https://github.com/SAREC-Lab/Dronology-GCS.git
 
 # main.py will run when container starts up on the device
-CMD ["python","src/main.py", "--settings=resin_settings]
+#CMD ["python","src/main.py", "--settings=resin_settings]
