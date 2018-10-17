@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # Install dependencies
 #RUN    apt-get update \
 #    && apt-get install -yq ccache 
-RUN source venv/bin/activate
+RUN venv/bin/activate
 
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
