@@ -21,8 +21,6 @@ RUN git clone https://github.com/dronology-outdoor/PiDronology.git
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
 
-RUN 
-
 # Copy the networking file into place
 #COPY ./DronologyAdHoc /system-connections/
 
