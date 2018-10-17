@@ -1,7 +1,7 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/raspberrypi3-python:latest
-ENV PYTHON_VERSION 2.7.15
+#ENV PYTHON_VERSION 2.7.15
 # Set working directory
 WORKDIR /usr/src/app
 
