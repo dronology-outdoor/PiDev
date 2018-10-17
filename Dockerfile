@@ -37,4 +37,4 @@ COPY . ./
 #git clone https://github.com/SAREC-Lab/Dronology-GCS.git
 
 # main.py will run when container starts up on the device
-CMD ["python","src/main.py"]
+CMD ["python","src/main.py", "--settings=resin_settings]
