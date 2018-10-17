@@ -13,7 +13,7 @@ COPY ./requirements.txt /requirements.txt
 
 # pip install python deps from requirements.txt on the resin.io build server
 #RUN pip install --upgrade pip && pip install -r /requirements.txt
-#RUN pip install -r /requirements.txt
+RUN pip install -r /requirements.txt
 
 # Copy the dummy ssh keys into place so it can clone from private repo
 COPY ./id_rsa ~/.ssh/
