@@ -1,3 +1,4 @@
+import time 
 from os import listdir
 from simple_settings import settings
 
@@ -11,3 +12,7 @@ a=listdir(settings.DIR)
 print("HERE")
 b=listdir('./')
 print(a,b)
+
+while (1):
+	print ("hi")
+	time.sleep(1)

@@ -4,9 +4,10 @@ FROM resin/raspberrypi3-python:latest
 # Set working directory
 WORKDIR /usr/src/app
 
-# Install dependencies
-RUN    apt-get update \
-    && apt-get install -yq ccache 
+# Commented out for now to save time
+## Update and Install dependencies
+#RUN    apt-get update \
+#    && apt-get install -yq ccache 
 
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
@@ -15,8 +16,8 @@ COPY ./requirements.txt /requirements.txt
 RUN pip install --upgrade pip && pip install -r /requirements.txt
 
 # Copy the dummy ssh keys into place so it can clone from private repo
-#COPY ./id_rsa ~/.ssh/
-#COPY ./id_rsa.pub ~/.ssh/
+#COPY id_rsa ~/.ssh/
+#COPY id_rsa.pub ~/.ssh/
 
 # Cone repo
 RUN git clone https://github.com/dronology-outdoor/PiDronology.git 	
