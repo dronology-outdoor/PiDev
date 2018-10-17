@@ -12,19 +12,22 @@ RUN    apt-get update \
 COPY ./requirements.txt /requirements.txt
 
 # pip install python deps from requirements.txt on the resin.io build server
-#RUN pip install --upgrade pip && pip install -r /requirements.txt
-RUN pip install -r /requirements.txt
+RUN pip install --upgrade pip && pip install -r /requirements.txt
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
 
 # Copy the networking file into place
-COPY 
+#COPY ./DronologyAdHoc /system-connections/
 
-# Install dronology GCS
-RUN git config --global user.name "dronology-outdoor" &&\
-git config --global user.email dronology-outdoor@nonsense.com
-git clone https://github.com/SAREC-Lab/Dronology-GCS.git
+# Copy the dummy ssh keys into place so it can clone from private repo
+#COPY ./id_rsa ~/.ssh/
+#COPY ./id_rsa.pub ~/.ssh/
+
+## Install dronology GCS
+#RUN git config --global user.name "dronology-outdoor" &&\
+#git config --global user.email dronology-outdoor@nonsense.com
+#git clone https://github.com/SAREC-Lab/Dronology-GCS.git
 
 # main.py will run when container starts up on the device
 CMD ["python","src/main.py"]
