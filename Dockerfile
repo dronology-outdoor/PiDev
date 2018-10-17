@@ -1,20 +1,20 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/raspberrypi3-python:latest
-#ENV PYTHON_VERSION 2.7.15
+ENV PYTHON_VERSION 2.7.15
 # Set working directory
 WORKDIR /usr/src/app
 
 # Install dependencies
-RUN    apt-get update \
-    && apt-get install -yq ccache 
+#RUN    apt-get update \
+#    && apt-get install -yq ccache 
 
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
 
 # pip install python deps from requirements.txt on the resin.io build server
-#RUN pip install --upgrade pip && pip install -r /requirements.txt
-RUN pip install -r /requirements.txt
+RUN pip install --upgrade pip && pip install -r /requirements.txt
+#RUN pip install -r /requirements.txt
 
 # Copy the dummy ssh keys into place so it can clone from private repo
 #COPY ./id_rsa ~/.ssh/
