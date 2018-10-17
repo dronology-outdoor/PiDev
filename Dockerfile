@@ -14,7 +14,7 @@ COPY ./requirements.txt /requirements.txt
 FROM python:2.7
 
 RUN virtualenv ./venv
-RUN ./venv/bin/pip install --upgrade pip && ./venv/bin/pip install -r /requirements.txt
+RUN ./venv/bin/pip install --upgrade pip && ./venv/bin/pip install -r ./requirements.txt
 
 # Copy the dummy ssh keys into place so it can clone from private repo
 #COPY ./id_rsa ~/.ssh/
