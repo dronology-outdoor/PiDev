@@ -6,15 +6,15 @@ ENV PYTHON_VERSION 2.7.15
 WORKDIR /usr/src/app
 
 # Install dependencies
-#RUN    apt-get update \
-#    && apt-get install -yq ccache 
+RUN    apt-get update \
+    && apt-get install -yq ccache 
 
 # Copy requirements.txt first for better cache on later pushes
-#COPY ./requirements.txt /requirements.txt
+COPY ./requirements.txt /requirements.txt
 
 # pip install python deps from requirements.txt on the resin.io build server
 #RUN pip install --upgrade pip && pip install -r /requirements.txt
-#RUN pip install -r /requirements.txt
+RUN pip install -r /requirements.txt
 
 # Copy the dummy ssh keys into place so it can clone from private repo
 #COPY ./id_rsa ~/.ssh/
@@ -24,7 +24,7 @@ WORKDIR /usr/src/app
 #RUN git clone https://github.com/dronology-outdoor/PiDronology.git 	
 
 # This will copy all files in our root to the working  directory in the container
-#COPY . ./
+COPY . ./
 
 # Copy the networking file into place
 #COPY ./DronologyAdHoc /system-connections/
@@ -38,4 +38,4 @@ WORKDIR /usr/src/app
 #git clone https://github.com/SAREC-Lab/Dronology-GCS.git
 
 # main.py will run when container starts up on the device
-#CMD ["python","src/main.py", "--settings=resin_settings]
+CMD ["python","src/main.py", "--settings=resin_settings]
