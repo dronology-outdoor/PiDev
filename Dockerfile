@@ -14,6 +14,7 @@ WORKDIR /usr/src/app
 
 # Install python modules
 #RUN pip install --upgrade pip && pip install -r /requirements.txt
+RUN pip install --upgrade pip && pip install -r /requirements.txt
 
 # Cone repo
 RUN git clone https://github.com/dronology-outdoor/PiDronology.git 	
