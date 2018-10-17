@@ -10,14 +10,10 @@ WORKDIR /usr/src/app
 #    && apt-get install -yq ccache 
 
 # Copy requirements.txt first for better cache on later pushes
-COPY ./requirements.txt /requirements.txt
+#COPY ./requirements.txt /requirements.txt
 
 # Install python modules
-RUN pip install --upgrade pip && pip install -r /requirements.txt
-
-# Copy the dummy ssh keys into place so it can clone from private repo
-#COPY id_rsa ~/.ssh/
-#COPY id_rsa.pub ~/.ssh/
+#RUN pip install --upgrade pip && pip install -r /requirements.txt
 
 # Cone repo
 RUN git clone https://github.com/dronology-outdoor/PiDronology.git 	
@@ -25,17 +21,12 @@ RUN git clone https://github.com/dronology-outdoor/PiDronology.git
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
 
+RUN 
+
 # Copy the networking file into place
 #COPY ./DronologyAdHoc /system-connections/
 
-
-
-
-## Install dronology GCS
-#RUN git config --global user.name "dronology-outdoor" &&\
-#git config --global user.email dronology-outdoor@nonsense.com
-#git clone https://github.com/SAREC-Lab/Dronology-GCS.git
-
 # main.py will run when container starts up on the device
 CMD ["python","--version"]
-CMD ["python","-u", "src/main.py", "--settings=resin_settings"]
+#CMD ["python","-u", "src/main.py", "--settings=resin_settings"]
+CMD ["python","-u", "PiDronology/main.py", "--settings=resin_settings"]
