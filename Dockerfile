@@ -10,12 +10,8 @@ WORKDIR /usr/src/app
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
 
-# Use venv to get around py 2.7 troubles
-#FROM python:2.7
 
-RUN virtualenv ./venv
-#RUN ./venv/bin/pip install --upgrade pip && ./venv/bin/pip install -r /requirements.txt
-RUN ./venv/bin/pip install -r /requirements.txt
+RUN ./venv/bin/pip install --upgrade pip && ./venv/bin/pip install -r /requirements.txt
 
 # Copy the dummy ssh keys into place so it can clone from private repo
 #COPY ./id_rsa ~/.ssh/
@@ -39,7 +35,5 @@ COPY . ./
 #git clone https://github.com/SAREC-Lab/Dronology-GCS.git
 
 # main.py will run when container starts up on the device
-
-#CMD ["./venv/bin/python","src/main.py", "--settings=resin_settings"]
-CMD ["./venv/bin/python","--version"]
-CMD ["./venv/bin/pip","search", "dronekit"]
+CMD ["python","--version"]
+CMD ["python","-u", "src/main.py", "--settings=resin_settings"]
