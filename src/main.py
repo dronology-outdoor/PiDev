@@ -14,5 +14,5 @@ b=listdir('./')
 print(a,b)
 
 while (1):
-	print ("hi")
+	print ("boat")
 	time.sleep(1)
