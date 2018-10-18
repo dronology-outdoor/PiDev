@@ -15,7 +15,7 @@ COPY ./requirements.txt /requirements.txt
 # Install python modules
 #TODO Switch commented out lines to include upgrading
 #RUN pip install --upgrade pip && pip install -r /requirements.txt
-#RUN pip install -r /requirements.txt
+RUN pip install -r /requirements.txt
 
 # Cone repo
 #RUN git clone https://github.com/dronology-outdoor/PiDronology.git 	
@@ -28,6 +28,6 @@ COPY . ./
 
 # main.py will run when container starts up on the device
 #CMD ["python","--version"]
-CMD ["python", "src/main.py"]
-#CMD ["python","-u", "src/main.py", "--settings=resin_settings"]
+#CMD ["python", "src/main.py"]
+CMD ["python","-u", "src/main.py", "--settings=resin_settings"]
 #CMD ["python","-u", "PiDronology/main.py", "--settings=resin_settings"]
