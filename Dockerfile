@@ -4,7 +4,7 @@ FROM resin/raspberrypi3-python:latest
 # Set working directory
 WORKDIR /usr/src/app
 
-# Commented out for now to save time
+#TODO Commented out for now to save time, remove comments for deployment
 ## Update and Install dependencies
 #RUN    apt-get update \
 #    && apt-get install -yq ccache 
