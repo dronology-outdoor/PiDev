@@ -13,9 +13,9 @@ WORKDIR /usr/src/app
 COPY ./requirements.txt /requirements.txt
 
 # Install python modules
-#TODO Switch commented out lines
+#TODO Switch commented out lines to include upgrading
 #RUN pip install --upgrade pip && pip install -r /requirements.txt
-RUN pip install --upgrade pip && pip install -r /requirements.txt
+RUN pip install -r /requirements.txt
 
 # Cone repo
 RUN git clone https://github.com/dronology-outdoor/PiDronology.git 	
