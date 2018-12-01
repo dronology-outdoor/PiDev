@@ -1,6 +1,8 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/raspberrypi3-python:latest
+ENV COMMIT=f73c199278b5c728977a7d17e958ec05c0cc926d
+
 # Set working directory
 WORKDIR /usr/src/app
 
@@ -18,7 +20,8 @@ COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
 # Cone repo
-RUN git clone https://github.com/dronology-outdoor/PiDronology.git 	
+RUN git clone https://github.com/dronology-outdoor/PiDronology.git /usr/src/app
+RUN git checkout -q $COMMIT	
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
