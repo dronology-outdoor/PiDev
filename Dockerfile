@@ -1,7 +1,7 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/raspberrypi3-python:latest
-ENV COMMIT=f73c199278b5c728977a7d17e958ec05c0cc926d
+ENV COMMIT=17aea418095fb82120b9c0e3a0252ee5ed59f64b
 
 # Set working directory
 WORKDIR /usr/src/app
