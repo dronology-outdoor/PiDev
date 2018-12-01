@@ -30,6 +30,5 @@ COPY . ./
 #COPY ./DronologyAdHoc /system-connections/
 
 # main.py will run when container starts up on the device
-#CMD ["python","--version"]
-#CMD ["python", "src/main.py"]
-CMD ["python","-u", "PiDronology/main.py", "--settings=resin_settings"]
+#CMD ["python","-u", "PiDronology/main.py", "--settings=resin_settings"]
+CMD ["python","-u", "main.py", "--settings=resin_settings"]
