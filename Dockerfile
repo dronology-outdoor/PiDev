@@ -1,7 +1,7 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/raspberrypi3-python:latest
-ENV COMMIT=17aea418095fb82120b9c0e3a0252ee5ed59f64b
+ENV COMMIT=438a989caf857a7f69f243db146641b433febf83
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -16,10 +16,10 @@ COPY ./requirements.txt /requirements.txt
 
 # Install python modules
 #TODO Switch commented out lines to include upgrading
-#RUN pip install --upgrade pip && pip install -r /requirements.txt
-RUN pip install -r /requirements.txt
+RUN pip install --upgrade pip && pip install -r /requirements.txt
+#RUN pip install -r /requirements.txt
 
-# Cone repo
+# Clone repo and checkout latest commit to force updates
 RUN git clone https://github.com/dronology-outdoor/PiDronology.git /usr/src/app
 RUN git checkout -q $COMMIT	
 
