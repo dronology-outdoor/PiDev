@@ -8,7 +8,18 @@ WORKDIR /usr/src/app
 #TODO Commented out for now to save time, remove comments for deployment
 ## Update and Install dependencies
 RUN    apt-get update \
-    && apt-get install -yq ccache wireless-tools dhclient 
+    && apt-get install -yq ccache wireless-tools 
+RUN export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+RUN DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket \
+dbus-send \
+  --system \
+  --print-reply \
+  --reply-timeout=2000 \
+  --type=method_call \
+  --dest=org.freedesktop.NetworkManager \
+  /org/freedesktop/NetworkManager  \
+  org.freedesktop.DBus.Properties.GetAll \
+  string:"org.freedesktop.NetworkManager" 
 
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
