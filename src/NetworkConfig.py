@@ -45,16 +45,16 @@ nm_iface = dbus.Interface(nm_proxy, 'org.freedesktop.NetworkManager')
 
 
 
-def find_connection(requested_uuid):
-    for c in ss_iface.ListConnections():
-        print "get the details of the connection"
-        c_proxy = sys_bus.get_object('org.freedesktop.NetworkManagerSystemSettings', c)
-        c_iface = dbus.Interface(c_proxy, 'org.freedesktop.NetworkManagerSettings.Connection')
-        settings = c_iface.GetSettings()
-        if settings['connection']['uuid'] == requested_uuid:
-            print "found our connection"
-            return c
-    return None
+#def find_connection(requested_uuid):
+#    for c in ss_iface.ListConnections():
+#        print "get the details of the connection"
+#        c_proxy = sys_bus.get_object('org.freedesktop.NetworkManagerSystemSettings', c)
+#        c_iface = dbus.Interface(c_proxy, 'org.freedesktop.NetworkManagerSettings.Connection')
+#        settings = c_iface.GetSettings()
+#        if settings['connection']['uuid'] == requested_uuid:
+#            print "found our connection"
+#            return c
+#    return None
 
 
 def try_add(connection):
