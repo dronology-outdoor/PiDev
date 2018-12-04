@@ -1,7 +1,8 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/raspberrypi3-python:latest
-ENV COMMIT=b796f8d58ccabcadb88340ad04ec54dbc7a994e2
+ENV COMMIT=99a4a7b4ac7329e015738bbcb99c5883d45436d6
+
 # Set working directory
 WORKDIR /usr/src/app
 
@@ -9,7 +10,7 @@ WORKDIR /usr/src/app
 ## Update and Install dependencies
 RUN    apt-get update \
     && apt-get install -yq ccache wireless-tools dbus 
-
+RUN export  DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
 COPY ./AIR1 /AIR1
