@@ -19,9 +19,9 @@ COPY ./AIR1 /AIR1
 RUN pip install --upgrade pip && pip install -r /requirements.txt
 #RUN pip install -r /requirements.txt
 
-# Clone repo and checkout latest commit to force updates
-RUN git clone https://github.com/dronology-outdoor/PiDronology.git /usr/src/app
-RUN git checkout -q $COMMIT	
+## Clone repo and checkout latest commit to force updates
+#RUN git clone https://github.com/dronology-outdoor/PiDronology.git /usr/src/app
+#RUN git checkout -q $COMMIT	
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
@@ -30,5 +30,5 @@ COPY . ./
 #COPY ./DronologyAdHoc /system-connections/
 
 # main.py will run when container starts up on the device
-#CMD ["python","-u", "PiDronology/main.py", "--settings=resin_settings"]
-CMD ["python","-u", "main.py", "--settings=resin_settings"]
+#CMD ["python","-u", "main.py", "--settings=resin_settings"]
+CMD ["python", "/src/main.py"]
