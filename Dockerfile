@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 #TODO Commented out for now to save time, remove comments for deployment
 ## Update and Install dependencies
 RUN    apt-get update \
-    && apt-get install -yq ccache wireless-tools 
+    && apt-get install -yq ccache wireless-tools dbus 
 RUN export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 RUN DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket \
 dbus-send \
