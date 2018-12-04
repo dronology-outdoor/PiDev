@@ -1,15 +1,14 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/raspberrypi3-python:latest
-ENV COMMIT=438a989caf857a7f69f243db146641b433febf83
-
+ENV COMMIT=b796f8d58ccabcadb88340ad04ec54dbc7a994e2
 # Set working directory
 WORKDIR /usr/src/app
 
 #TODO Commented out for now to save time, remove comments for deployment
 ## Update and Install dependencies
 RUN    apt-get update \
-    && apt-get install -yq ccache wireless-tools 
+    && apt-get install -yq ccache wireless-tools dhclient 
 
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
