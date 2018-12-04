@@ -13,7 +13,7 @@ RUN    apt-get update \
 RUN export  DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
-COPY ./AIR1 /AIR1
+#COPY ./AIR1 /AIR1
 # Install python modules
 #TODO Switch commented out lines to include upgrading
 RUN pip install --upgrade pip && pip install -r /requirements.txt
@@ -31,4 +31,4 @@ COPY . ./
 
 # main.py will run when container starts up on the device
 #CMD ["python","-u", "main.py", "--settings=resin_settings"]
-CMD ["python", "/src/main.py"]
+CMD ["python", "src/main.py"]
