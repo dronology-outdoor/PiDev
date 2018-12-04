@@ -8,12 +8,12 @@ WORKDIR /usr/src/app
 
 #TODO Commented out for now to save time, remove comments for deployment
 ## Update and Install dependencies
-#RUN    apt-get update \
-#    && apt-get install -yq ccache 
+RUN    apt-get update \
+    && apt-get install -yq ccache wireless-tools 
 
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
-
+COPY ./AIR1 /AIR1
 # Install python modules
 #TODO Switch commented out lines to include upgrading
 RUN pip install --upgrade pip && pip install -r /requirements.txt
