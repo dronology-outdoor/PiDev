@@ -31,9 +31,8 @@ con = {'connection': s_con,
 
 # init dbus
 sys_bus = dbus.SystemBus()
-ses_bus = dbus.SessionBus()
+#ses_bus = dbus.SessionBus()
 
-ss_proxy = sys_bus.get_object('org.freedesktop.NetworkManagerSystemSettings', '/org/freedesktop/NetworkManagerSettings')
 ss_proxy = sys_bus.get_object('org.freedesktop.NetworkManagerSystemSettings', '/org/freedesktop/NetworkManagerSettings')
 ss_iface = dbus.Interface(ss_proxy, 'org.freedesktop.NetworkManagerSettings')
 ss_sys_iface = dbus.Interface(ss_proxy, 'org.freedesktop.NetworkManagerSettings.System')
@@ -41,8 +40,8 @@ ss_sys_iface = dbus.Interface(ss_proxy, 'org.freedesktop.NetworkManagerSettings.
 nm_proxy = sys_bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManager')
 nm_iface = dbus.Interface(nm_proxy, 'org.freedesktop.NetworkManager')
 
-pk_proxy = ses_bus.get_object('org.freedesktop.PolicyKit.AuthenticationAgent', '/')
-pk_iface = dbus.Interface(pk_proxy, 'org.freedesktop.PolicyKit.AuthenticationAgent')
+#pk_proxy = ses_bus.get_object('org.freedesktop.PolicyKit.AuthenticationAgent', '/')
+#pk_iface = dbus.Interface(pk_proxy, 'org.freedesktop.PolicyKit.AuthenticationAgent')
 
 
 def find_connection(requested_uuid):
@@ -76,24 +75,24 @@ def try_add(connection):
 def configure_adhoc():
 
     con_path = find_connection(uuid)
-    if not con_path:
-        print "Try to create the connection, which could fail if we need authorization.\n If auth is required, " \
-              "get the auth and try adding it again "
-        action = try_add(con)
-        if action:
-            gained = pk_iface.ObtainAuthorization(action, 0, posix.getpid())
-            if gained:
-                print "Yay, we have the privilege now, try adding again"
-                action = try_add(con)
-                if action:
-                    print "hmm, something went wrong and PolicyKit wasn't able to auth the user"
-                    sys.exit(1)
-
-                con_path = find_connection(uuid)
-
-    print " Check again in case it was just added"
-    if not con_path:
-        print "Couldn't get newly created connection from system settings"
+#    if not con_path:
+#        print "Try to create the connection, which could fail if we need authorization.\n If auth is required, " \
+#              "get the auth and try adding it again "
+#        action = try_add(con)
+#        if action:
+#            gained = pk_iface.ObtainAuthorization(action, 0, posix.getpid())
+#            if gained:
+#                print "Yay, we have the privilege now, try adding again"
+#                action = try_add(con)
+#                if action:
+#                    print "hmm, something went wrong and PolicyKit wasn't able to auth the user"
+#                    sys.exit(1)
+#
+#                con_path = find_connection(uuid)
+#
+#    print " Check again in case it was just added"
+#    if not con_path:
+#        print "Couldn't get newly created connection from system settings"
 
     print "Find a wifi device to activate this connection on"
     dev_path = None
