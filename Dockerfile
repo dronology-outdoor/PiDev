@@ -10,7 +10,7 @@ WORKDIR /usr/src/app
 ## Update and Install dependencies
 ###RUN    apt-get update \
 ###    && apt-get install -yq ccache wireless-tools dbus 
-RUN export  DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+ENV  DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
 #COPY ./AIR1 /AIR1
