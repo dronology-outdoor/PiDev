@@ -1,5 +1,5 @@
 import time 
-import NetworkConfig
+#import NetworkConfig
 import dbus
 
 sys_bus = dbus.SystemBus()

@@ -8,20 +8,20 @@ WORKDIR /usr/src/app
 
 #TODO Commented out for now to save time, remove comments for deployment
 ## Update and Install dependencies
-RUN    apt-get update \
-    && apt-get install -yq ccache wireless-tools dbus 
+###RUN    apt-get update \
+###    && apt-get install -yq ccache wireless-tools dbus 
 RUN export  DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
 #COPY ./AIR1 /AIR1
 # Install python modules
 #TODO Switch commented out lines to include upgrading
-RUN pip install --upgrade pip && pip install -r /requirements.txt
-#RUN pip install -r /requirements.txt
+###RUN pip install --upgrade pip && pip install -r /requirements.txt
+###RUN pip install -r /requirements.txt
 
 ## Clone repo and checkout latest commit to force updates
-#RUN git clone https://github.com/dronology-outdoor/PiDronology.git /usr/src/app
-#RUN git checkout -q $COMMIT	
+###RUN git clone https://github.com/dronology-outdoor/PiDronology.git /usr/src/app
+###RUN git checkout -q $COMMIT	
 
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
