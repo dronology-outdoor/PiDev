@@ -44,6 +44,7 @@ nm_iface = dbus.Interface(nm_proxy, 'org.freedesktop.NetworkManager')
 #pk_iface = dbus.Interface(pk_proxy, 'org.freedesktop.PolicyKit.AuthenticationAgent')
 
 
+
 def find_connection(requested_uuid):
     for c in ss_iface.ListConnections():
         print "get the details of the connection"
