@@ -59,7 +59,7 @@ def HSUP():
     proxy = bus.get_object(service_name, "/org/freedesktop/NetworkManager/Settings")
     settings = dbus.Interface(proxy, "org.freedesktop.NetworkManager.Settings")
 
-    iface = 'wlan0'
+    iface = 'wlp4s0'
     proxy = bus.get_object(service_name, "/org/freedesktop/NetworkManager")
     nm = dbus.Interface(proxy, "org.freedesktop.NetworkManager")
     devpath = nm.GetDeviceByIpIface(iface)
@@ -101,5 +101,4 @@ def HSUP():
     else:
         print "Useless argument"
 
-    sys.exit(0)
 
