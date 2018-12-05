@@ -1,9 +1,9 @@
 import time 
-import NetworkConfig
+#import NetworkConfig
 import CreateHotSpot
 
 CreateHotSpot.HSUP()
 
 while (1):
 	print ("BOGS")
-	time.sleep(1)
+	time.sleep(10)
