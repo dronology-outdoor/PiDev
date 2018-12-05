@@ -90,7 +90,6 @@ def HSUP(iface,operation, this_uuid):
             state = active_props.Get("org.freedesktop.NetworkManager.Connection.Active", "State")
             if state == 2:  # NM_ACTIVE_CONNECTION_STATE_ACTIVATED
                 print("Access point started")
-                sys.exit(0)
             time.sleep(1)
         print("Failed to start access point")
     elif operation == "down":
