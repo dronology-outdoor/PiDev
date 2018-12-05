@@ -2,7 +2,7 @@ import time
 #import NetworkConfig
 import CreateHotSpot
 
-CreateHotSpot.HSUP('wlan0','up','2b0d0f1d-b79d-43af-bde1-71744625642e')
+CreateHotSpot.hotspot_control('wlp4s0','down','10.1.2.3','10.1.2.1')
 
 while (1):
 	print ("BOGS")

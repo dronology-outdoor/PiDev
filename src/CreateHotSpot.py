@@ -24,25 +24,34 @@
 # https://developer.gnome.org/NetworkManager/1.0/ref-settings.html
 #
 
-import dbus, sys, time
-def HSUP(iface,operation, this_uuid):
-
+import dbus, sys, time, uuid
+def hotspot_control(iface,operation,ip,gateway):
+    generated_uuid = str(uuid.uuid4())
     s_con = dbus.Dictionary({
         'type': '802-11-wireless',
-        'uuid': this_uuid,
+        'uuid': generated_uuid,
         'id': 'Test Hotspot'})
 
+    addr1 = dbus.Dictionary({
+    'address':ip,
+    'prefix': dbus.UInt32(8)})
+
     s_wifi = dbus.Dictionary({
-        'ssid': dbus.ByteArray("DOOBEE".encode("utf-8")),
+        'ssid': dbus.ByteArray("DronologyHotspot".encode("utf-8")),
         'mode': "ap",
         'band': "bg",
         'channel': dbus.UInt32(1)})
 
     s_wsec = dbus.Dictionary({
         'key-mgmt': 'wpa-psk',
-        'psk': '123456789'})
+        'psk': 'DronologyHotspot'})
 
-    s_ip4 = dbus.Dictionary({'method': 'shared'})
+#    s_ip4 = dbus.Dictionary({'method': 'shared'})
+    s_ip4 = dbus.Dictionary({
+        'address-data': dbus.Array([addr1], signature=dbus.Signature('a{sv}')),
+        'gateway': gateway,
+        'method': 'manual'})
+
     s_ip6 = dbus.Dictionary({'method': 'ignore'})
 
     con = dbus.Dictionary({
@@ -68,7 +77,7 @@ def HSUP(iface,operation, this_uuid):
         proxy = bus.get_object(service_name, path)
         settings_connection = dbus.Interface(proxy, "org.freedesktop.NetworkManager.Settings.Connection")
         config = settings_connection.GetSettings()
-        if config['connection']['uuid'] == this_uuid:
+        if config['connection']['uuid'] == generated_uuid:
             connection_path = path
             break
 
@@ -90,11 +99,11 @@ def HSUP(iface,operation, this_uuid):
             state = active_props.Get("org.freedesktop.NetworkManager.Connection.Active", "State")
             if state == 2:  # NM_ACTIVE_CONNECTION_STATE_ACTIVATED
                 print("Access point started")
-            time.sleep(1)
+                return
         print("Failed to start access point")
     elif operation == "down":
         device.Disconnect()
-    else:
-        print "Useless argument"
+        print "Access point stopped"
+        return
 
 

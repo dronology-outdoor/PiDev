@@ -6,7 +6,6 @@ import time
 import uuid
 
 uuid = str(uuid.uuid4())
-uuid = "cabfaf9e-4043-4afb-8506-0e6f4a225636"
 
 s_con = {'id': 'MyAdHoc',
          'uuid': uuid,
