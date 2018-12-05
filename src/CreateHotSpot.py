@@ -25,12 +25,11 @@
 #
 
 import dbus, sys, time
-def HSUP():
-    our_uuid = '2b0d0f1d-b79d-43af-bde1-71744625642e'
+def HSUP(iface,operation, this_uuid):
 
     s_con = dbus.Dictionary({
         'type': '802-11-wireless',
-        'uuid': our_uuid,
+        'uuid': this_uuid,
         'id': 'Test Hotspot'})
 
     s_wifi = dbus.Dictionary({
@@ -59,7 +58,6 @@ def HSUP():
     proxy = bus.get_object(service_name, "/org/freedesktop/NetworkManager/Settings")
     settings = dbus.Interface(proxy, "org.freedesktop.NetworkManager.Settings")
 
-    iface = 'wlp4s0'
     proxy = bus.get_object(service_name, "/org/freedesktop/NetworkManager")
     nm = dbus.Interface(proxy, "org.freedesktop.NetworkManager")
     devpath = nm.GetDeviceByIpIface(iface)
@@ -70,7 +68,7 @@ def HSUP():
         proxy = bus.get_object(service_name, path)
         settings_connection = dbus.Interface(proxy, "org.freedesktop.NetworkManager.Settings.Connection")
         config = settings_connection.GetSettings()
-        if config['connection']['uuid'] == our_uuid:
+        if config['connection']['uuid'] == this_uuid:
             connection_path = path
             break
 
@@ -81,7 +79,6 @@ def HSUP():
     # Now start or stop the hotspot on the requested device
     proxy = bus.get_object(service_name, devpath)
     device = dbus.Interface(proxy, "org.freedesktop.NetworkManager.Device")
-    operation = "up"
     if operation == "up":
         acpath = nm.ActivateConnection(connection_path, devpath, "/")
         proxy = bus.get_object(service_name, acpath)
