@@ -1,12 +1,8 @@
 import time 
-#import NetworkConfig
-#import dbus
+import NetworkConfig
+import CreateHotSpot
 
-#sys_bus = dbus.SystemBus()
-#NetworkConfig.configure_adhoc()
-#import listcons
-#listcons.print_connections()
-import createnew
+CreateHotSpot.HSUP()
 
 while (1):
 	print ("BOGS")

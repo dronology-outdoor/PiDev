@@ -14,28 +14,28 @@ s_con = {'id': 'MyAdHoc',
 
 s_wifi = {'ssid': dbus.ByteArray("foobar"),
           'mode': 'adhoc',
-          'security': '802-11-wireless-security',
-          'name': '802-11-wireless'}
+ #         'security': '802-11-wireless-security',
+        'name': '802-11-wireless'}
 
-s_wsec = {'key-mgmt': 'none',
-          'wep-key0': '0123456789abcdef0123456789',
-          'name': '802-11-wireless-security'}
+#s_wsec = {'key-mgmt': 'none',
+#          'wep-key0': '0123456789abcdef0123456789',
+#          'name': '802-11-wireless-security'}
 
 s_ip4 = {'method': 'link-local',
          'name': 'ipv4'}
 
 con = {'connection': s_con,
        '802-11-wireless': s_wifi,
-       '802-11-wireless-security': s_wsec,
+#       '802-11-wireless-security': s_wsec,
        'ipv4': s_ip4}
 
 # init dbus
 sys_bus = dbus.SystemBus()
 #ses_bus = dbus.SessionBus()
 
-ss_proxy = sys_bus.get_object('org.freedesktop.NetworkManagerSystemSettings', '/org/freedesktop/NetworkManagerSettings')
-ss_iface = dbus.Interface(ss_proxy, 'org.freedesktop.NetworkManagerSettings')
-ss_sys_iface = dbus.Interface(ss_proxy, 'org.freedesktop.NetworkManagerSettings.System')
+#ss_proxy = sys_bus.get_object('org.freedesktop.NetworkManagerSystemSettings', '/org/freedesktop/NetworkManagerSettings')
+#ss_iface = dbus.Interface(ss_proxy, 'org.freedesktop.NetworkManagerSettings')
+#ss_sys_iface = dbus.Interface(ss_proxy, 'org.freedesktop.NetworkManagerSettings.System')
 
 nm_proxy = sys_bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManager')
 nm_iface = dbus.Interface(nm_proxy, 'org.freedesktop.NetworkManager')
@@ -45,7 +45,7 @@ nm_iface = dbus.Interface(nm_proxy, 'org.freedesktop.NetworkManager')
 
 
 
-#def find_connection(requested_uuid):
+def find_connection(requested_uuid):
 #    for c in ss_iface.ListConnections():
 #        print "get the details of the connection"
 #        c_proxy = sys_bus.get_object('org.freedesktop.NetworkManagerSystemSettings', c)
@@ -91,9 +91,9 @@ def configure_adhoc():
 #
 #                con_path = find_connection(uuid)
 #
-#    print " Check again in case it was just added"
-#    if not con_path:
-#        print "Couldn't get newly created connection from system settings"
+    print " Check again in case it was just added"
+    if not con_path:
+        print "Couldn't get newly created connection from system settings"
 
     print "Find a wifi device to activate this connection on"
     dev_path = None
