@@ -2,7 +2,6 @@
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/raspberrypi3-python:latest
 ENV COMMIT=99a4a7b4ac7329e015738bbcb99c5883d45436d6
-
 # Set working directory
 WORKDIR /usr/src/app
 
@@ -30,5 +29,5 @@ COPY . ./
 #COPY ./DronologyAdHoc /system-connections/
 
 # main.py will run when container starts up on the device
-#CMD ["python","-u", "main.py", "--settings=resin_settings"]
-CMD ["python", "src/main.py"]
+CMD ["python","-u", "main.py", "--settings=resin_settings"]
+#CMD ["python", "src/main.py"]
