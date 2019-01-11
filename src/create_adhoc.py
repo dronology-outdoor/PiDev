@@ -5,7 +5,7 @@ def createadhoc_control(iface, ip, gateway):
     s_con = dbus.Dictionary({
         'type': '802-11-wireless',
         'uuid': generated_uuid,
-        'id': 'MyAdhoc'})
+        'id': 'DevAdhoc'})
 
     addr1 = dbus.Dictionary({
         'address': ip,
@@ -45,13 +45,6 @@ def createadhoc_control(iface, ip, gateway):
     devpath = nm.GetDeviceByIpIface(iface)
 
     #Get permissions
-        parts = str(e).split(' ')
-        if parts[0].find('org.freedesktop.NetworkManagerSettings.System.NotPrivileged') < 0:
-            print "not a permission denied, give up and exit"
-            print e
-            sys.exit(1)
-        print "yay, permission denied, we can handle this"
-        return parts[1]
 
     #Create Connection
     connection_path = settings.AddConnection(con)

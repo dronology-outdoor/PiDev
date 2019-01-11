@@ -42,7 +42,7 @@ nm_proxy = sys_bus.get_object('org.freedesktop.NetworkManager', '/org/freedeskto
 nm_iface = dbus.Interface(nm_proxy, 'org.freedesktop.NetworkManager')
 
 
-pk_proxy = ses_bus.get_object('org.freedektop')
+pk_proxy = ses_bus.get_object()
 pk_proxy = ses_bus.get_object('org.freedesktop.PolicyKit.AuthenticationAgent', '/')
 pk_iface = dbus.Interface(pk_proxy, 'org.freedesktop.PolicyKit.AuthenticationAgent')
 
