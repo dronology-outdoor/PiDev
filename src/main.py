@@ -1,4 +1,4 @@
-#import time
+import time
 #import NetworkConfig
 #import create_adhoc
 #import create_hotspot_WAP
