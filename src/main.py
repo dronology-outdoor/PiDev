@@ -1,8 +1,8 @@
-import time
-import NetworkConfig
-import create_adhoc
-import create_hotspot_WAP
-import create_hotspot_WEP
+#import time
+#import NetworkConfig
+#import create_adhoc
+#import create_hotspot_WAP
+#import create_hotspot_WEP
 
 
 #create_hotspot_WAP.hotspot_control('wlp4s0','down','10.1.2.3','10.1.2.1')
