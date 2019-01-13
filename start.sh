@@ -4,7 +4,14 @@ export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 echo "Setting adhoc wifi"
 python src/main.py --settings=adhoc_network
 echo "Network configured"
-
+touch frogs
+i="0"
+while [ $i -lt 10 ]
+do
+echo "Hello, I'm waiting"
+pwd
+sleep 5
+done
 #echo "Starting pixhawk transmission script"
-python apppliction/PiDronology/main.py --settings=dronology_Settings
+#python apppliction/PiDronology/main.py --settings=dronology_Settings
 
