@@ -1,5 +1,10 @@
 #!/bin/sh
 export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
-echo "Hello from bash"
+
+echo "Setting adhoc wifi"
 python src/main.py --settings=adhoc_network
-echo "all donr from bash"
+echo "Network configured"
+
+echo "Starting pixhawk transmission script"
+python app/main.py --settings=dronology_Settings
+
