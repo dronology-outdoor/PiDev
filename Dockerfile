@@ -1,7 +1,7 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/raspberrypi3-python:latest
-ENV COMMIT=61e459b022fb374c364ddd4bcd0ba84c4387cb3b
+ENV COMMIT=c5a8d537ead19dfac9ac1a09ea834809e3bdb886
 ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 # Set working directory
 WORKDIR /usr/src/app
@@ -23,8 +23,8 @@ RUN pip install -r /requirements.txt
 CMD ["python","-u", "src/main.py", "--settings=adhoc_network"]
 
 # Clone Onboard dronology repo and checkout latest commit to force updates
-RUN git clone https://gitlab.com/r4space/balena_pixhawk.git /usr/src/app
-#RUN git clone https://github.com/dronology-outdoor/PiDronology.git /usr/src/app
+#RUN git clone https://gitlab.com/r4space/balena_pixhawk.git /usr/src/app
+RUN git clone https://github.com/dronology-outdoor/PiDronology.git /usr/src/app
 RUN git checkout -q $COMMIT	
 
 # This will copy all files in our root to the working  directory in the container
