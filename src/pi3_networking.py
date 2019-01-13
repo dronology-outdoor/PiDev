@@ -2,7 +2,7 @@
 import dbus, time, uuid
 print "pi3 networking loaded"
 
-def hotspot_control(iface, operation, ip, gateway,connection_uuid):
+def hotspot_control(iface, operation, ip, gateway,connection_uuid, network_name):
     print "attempting config"
     s_con = dbus.Dictionary({
         'type': '802-11-wireless',
@@ -14,7 +14,7 @@ def hotspot_control(iface, operation, ip, gateway,connection_uuid):
         'prefix': dbus.UInt32(8)})
     
     s_wifi = dbus.Dictionary({
-        'ssid': dbus.ByteArray("dronologyhotspot".encode("utf-8")),
+        'ssid': dbus.ByteArray(network_name.encode("utf-8")),
         'mode': "adhoc",
         'band': "bg",
         'channel': dbus.UInt32(1)})

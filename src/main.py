@@ -5,8 +5,9 @@ import pi3_networking
 ip='10.1.2.5'
 gateway='10.42.0.200'
 connection_uuid = str(uuid.uuid4())
+network_name = "DronologyAdhoc"
 
-pi3_networking.hotspot_control('wlan0', up, ip, gateway,connection_uuid)
+pi3_networking.hotspot_control('wlan0', "up", ip, gateway,connection_uuid, network_name)
 
 while (1):
     print ("BOGS")
