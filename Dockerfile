@@ -21,17 +21,12 @@ RUN pip install -r /requirements.txt
 
 
 # Clone Onboard dronology repo and checkout latest commit to force updates
-RUN git clone https://github.com/dronology-outdoor/PiDronology.git application
 WORKDIR /usr/src/app/application
+RUN git clone https://github.com/dronology-outdoor/PiDronology.git
 RUN git checkout -q $COMMIT	
 RUN pip install -r /requirements.txt
 
 WORKDIR /usr/src/app
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
-
-#Run main.py to configure adhoc network
-#CMD ["python","-u", "src/main.py", "--settings=adhoc_network"]
-# main.py will run when container starts up on the device
-#CMD ["python","-u", "application/main.py", "--settings=dronology_Settings"]
 CMD ["bash", "start.sh"]

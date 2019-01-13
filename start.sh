@@ -5,6 +5,6 @@ echo "Setting adhoc wifi"
 python src/main.py --settings=adhoc_network
 echo "Network configured"
 
-#echo "Starting pixhawk transmission script"
-#python app/main.py --settings=dronology_Settings
+echo "Starting pixhawk transmission script"
+python app/main.py --settings=dronology_Settings
 
