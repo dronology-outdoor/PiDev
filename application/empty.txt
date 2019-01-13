@@ -1,0 +1,3 @@
+Empty to note to force creation of empty folder
+Copy applications run using networking config container in here
+

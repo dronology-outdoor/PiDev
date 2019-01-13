@@ -1,6 +1,1 @@
 simple-settings
-pyserial
-dronekit
-#numpy 
-#scipy
-#python-qt
