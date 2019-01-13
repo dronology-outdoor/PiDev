@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 ## Update and Install dependencies
 RUN install_packages git
 RUN    apt-get update \
-    && apt-get install -yq dbus 
+    && apt-get install -yq dbus gcc 
 
 # Copy requirements.txt first for better cache on later pushes
 COPY ./requirements.txt /requirements.txt
