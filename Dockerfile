@@ -28,9 +28,9 @@ RUN touch mzansi1
 RUN ls
 RUN ls PiDronology/
 #RUN git checkout -q $COMMIT	
-COPY PiDronology/requirements.txt /requirements.txt
-#RUN touch mzansi2
-#RUN pip install -r /requirements.txt
+#COPY PiDronology/requirements.txt /requirements.txt
+RUN touch mzansi2
+RUN pip install -r PiDronology/requirements.txt
 #RUN touch mzansi3
 #RUN pip install -r PiDronology/requirements.txt
 
