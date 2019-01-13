@@ -1,7 +1,8 @@
 # PiDev
 Development Repo to test code chunks on mounted pis
+Currently THIS repo deploys a pi with debian stretch and python tools installs and configurs an adhoc network per settings in src/adhoc_network.py
 
-Demonstration pi code being installed is currently stored [here](https://github.com/dronology-outdoor/PiDronology.git)
+Currently the demonstration application being installed is [PiDronology](https://github.com/dronology-outdoor/PiDronology.git)
 
 ## Create new pi:
 * Login to resin.io with outdoor account
@@ -18,6 +19,7 @@ Demonstration pi code being installed is currently stored [here](https://github.
   ```bash
   $ git push master
   ```
+AND
   - The resin repo to cause applications on ALL pis to update whenever pis are connected to the internet as above
   ```bash
   $ git push resin
