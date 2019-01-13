@@ -22,11 +22,11 @@ RUN pip install -r /requirements.txt
 
 # Clone Onboard dronology repo and checkout latest commit to force updates
 WORKDIR /usr/src/app/application
-#RUN touch mzansi0
+RUN touch mzansi0
 RUN git clone https://github.com/dronology-outdoor/PiDronology.git
 #RUN touch mzansi1
 #RUN git checkout -q $COMMIT	
-COPY PiDronology/requirements.txt /requirements.txt
+COPY ./PiDronology/requirements.txt /requirements.txt
 #RUN touch mzansi2
 RUN pip install -r /requirements.txt
 #RUN touch mzansi3
