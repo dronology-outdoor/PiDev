@@ -25,8 +25,10 @@ WORKDIR /usr/src/app/application
 RUN touch mzansi0
 RUN git clone https://github.com/dronology-outdoor/PiDronology.git
 RUN touch mzansi1
+RUN ls
+RUN ls PiDronology/
 #RUN git checkout -q $COMMIT	
-#COPY ./PiDronology/requirements.txt /requirements.txt
+COPY PiDronology/requirements.txt /requirements.txt
 #RUN touch mzansi2
 #RUN pip install -r /requirements.txt
 #RUN touch mzansi3
