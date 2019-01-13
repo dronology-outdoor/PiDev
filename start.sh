@@ -12,6 +12,6 @@ pwd
 ls
 sleep 5
 done
-#echo "Starting pixhawk transmission script"
-#python apppliction/PiDronology/main.py --settings=dronology_Settings
+echo "Starting pixhawk transmission script"
+python application/PiDronology/main.py --setttings=application/PiDronology/dronology_Settings
 
