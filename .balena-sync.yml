@@ -1,0 +1,10 @@
+uuid: 7f1c7461d1f0bdbe39b4468bd6130120
+destination: /usr/src/app
+before: echo Hello
+after: echo Done
+ignore:
+  - .git
+local_balenaos:
+  app-name: local-app
+  build-triggers:
+  environment: []

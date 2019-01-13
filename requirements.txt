@@ -1,6 +1,6 @@
+simple-settings
 pyserial
 dronekit
-simple-settings
 #numpy 
 #scipy
 #python-qt
