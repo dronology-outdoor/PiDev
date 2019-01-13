@@ -2,6 +2,7 @@
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 FROM resin/raspberrypi3-python:latest
 #ENV COMMIT=99a4a7b4ac7329e015738bbcb99c5883d45436d6
+ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 # Set working directory
 WORKDIR /usr/src/app
 
