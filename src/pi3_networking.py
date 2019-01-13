@@ -47,6 +47,8 @@ def hotspot_control(iface, operation, ip, gateway,connection_uuid, network_name)
     nm = dbus.Interface(proxy, "org.freedesktop.NetworkManager")
     devpath = nm.GetDeviceByIpIface(iface)
     
+    # Find the existing hotspot connection if it exists
+    connection_path = None
     for path in settings.ListConnections():
         proxy = bus.get_object(service_name, path)
         settings_connection = dbus.Interface(proxy, "org.freedesktop.NetworkManager.Settings.Connection")
@@ -54,11 +56,11 @@ def hotspot_control(iface, operation, ip, gateway,connection_uuid, network_name)
         if config['connection']['uuid'] == connection_uuid:
             connection_path = path
             break
-    
     # If the hotspot connection didn't already exist, add it
     if not connection_path:
         connection_path = settings.AddConnection(con)
     print "got a connection path"
+    
     # Now start or stop the hotspot on the requested device
     proxy = bus.get_object(service_name, devpath)
     device = dbus.Interface(proxy, "org.freedesktop.NetworkManager.Device")
