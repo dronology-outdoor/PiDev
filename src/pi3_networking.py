@@ -23,7 +23,7 @@ def hotspot_control(iface, operation, ip, gateway,connection_uuid, network_name)
         'key-mgmt': 'none',
         'wep-key0': '0123456789abcdef0123456789'})
     
-    s_ip4 = dbus.Dictionary({'method': 'auto'})
+    s_ip4 = dbus.Dictionary({'method': 'link-local'})
 #    s_ip4 = dbus.Dictionary({
 #        'address-data': dbus.Array([addr1], signature=dbus.Signature('a{sv}')),
 #        'gateway': gateway,
