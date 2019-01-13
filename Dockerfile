@@ -1,5 +1,5 @@
 # base-image for python on any machine using a template variable,
-FROM balenalib/raspberrypi3-python:latest
+FROM balenalib/raspberrypi3-debian-python:latest
 ENV COMMIT=c5a8d537ead19dfac9ac1a09ea834809e3bdb886
 ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 # Set working directory
@@ -35,4 +35,5 @@ RUN touch mzansi1
 WORKDIR /usr/src/app
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
+RUN touch mzansi4
 CMD ["bash", "start.sh"]
