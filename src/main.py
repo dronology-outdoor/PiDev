@@ -1,13 +1,9 @@
-import time, uuid
+import time
 import pi3_networking
+from simple_settings import settings
 
 #Start adhoc interface
-ip='10.1.2.5'
-gateway='10.42.0.200'
-connection_uuid = str(uuid.uuid4())
-network_name = "DronologyAdhoc"
-
-pi3_networking.hotspot_control('wlan0', "up", ip, gateway,connection_uuid, network_name)
+pi3_networking.hotspot_control('wlan0', "up", settings.IP, settings.GATEWAY, settings.CONNECTION_UUID, settings.NETWORK_NAME)
 
 while (1):
     print ("BOGS")
