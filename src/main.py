@@ -1,4 +1,4 @@
-import time uuid
+import time, uuid
 import pi3_networking
 
 #Start adhoc interface
