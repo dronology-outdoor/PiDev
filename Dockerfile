@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 
 #TODO Commented out for now to save time, remove comments for deployment
 ## Update and Install dependencies
+RUN install_packages git
 ###RUN    apt-get update \
 ###    && apt-get install -yq ccache wireless-tools dbus 
 
