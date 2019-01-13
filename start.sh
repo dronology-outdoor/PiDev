@@ -6,5 +6,5 @@ python src/main.py --settings=adhoc_network
 echo "Network configured"
 
 #echo "Starting pixhawk transmission script"
-#python app/main.py --settings=dronology_Settings
+python apppliction/PiDronology/main.py --settings=dronology_Settings
 

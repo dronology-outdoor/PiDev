@@ -24,11 +24,9 @@ RUN pip install -r /requirements.txt
 WORKDIR /usr/src/app/application
 RUN git clone https://github.com/dronology-outdoor/PiDronology.git
 #RUN git checkout -q $COMMIT	
-#RUN pip install -r /requirements.txt
-RUN touch dog
+RUN pip install -r PiDronology/requirements.txt
 
 WORKDIR /usr/src/app
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
-RUN touch cat
 CMD ["bash", "start.sh"]
