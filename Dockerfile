@@ -22,9 +22,11 @@ RUN pip install -r /requirements.txt
 
 # Clone Onboard dronology repo and checkout latest commit to force updates
 RUN git clone https://github.com/dronology-outdoor/PiDronology.git application
+WORKDIR /usr/src/app/application
 RUN git checkout -q $COMMIT	
 RUN pip install -r /requirements.txt
 
+WORKDIR /usr/src/app
 # This will copy all files in our root to the working  directory in the container
 COPY . ./
 
